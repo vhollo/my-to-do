@@ -16,6 +16,47 @@
                 "draggable": "true"
             }
         },
+        "actionEventListener": {
+            "prototype": "montage/core/event/action-event-listener",
+            "properties": {
+                "action": "addContent",
+                "handler": {"@": "rangeController"}
+            },
+            "_dev": {
+                "isHidden": true
+            }
+        },
+        "button": {
+            "prototype": "digit/ui/button.reel",
+            "properties": {
+                "element": {"#": "button"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true",
+                "enabled": true,
+                "label": "New task"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": true,
+                    "listener": {"@": "actionEventListener"}
+                }
+            ]
+        },
+        "list": {
+            "prototype": "digit/ui/list.reel",
+            "properties": {
+                "element": {"#": "list"},
+                "contentController": {"@": "rangeController"},
+                "contenteditable": "true",
+                "dir": "ltr",
+                "draggable": "true"
+            }
+        },
+        "rangeController": {
+            "prototype": "montage/core/range-controller"
+        },
         "title": {
             "prototype": "digit/ui/title.reel",
             "properties": {
@@ -31,7 +72,13 @@
 </head>
 <body>
     <div data-montage-id="main" data-montage-skin="light" class="Main">
-        <h1 data-montage-id="title"></h1>
+        <h1 data-montage-id="title">
+
+        </h1>
+        <button data-montage-id="button"></button>
+        <ul data-montage-id="list">
+            <li></li>
+        </ul>
     </div>
 </body>
 </html>
